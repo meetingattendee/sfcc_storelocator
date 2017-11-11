@@ -1,0 +1,139 @@
+<iscomment>
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isset name="decoratorTemplate" value="${request.httpParameterMap.format.stringValue === 'ajax' ? 'util/pt_empty' : 'storelocator/pt_storelocatorresults'}" scope="page" />
+</iscomment>
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isset name="DecoratorTemplate" value="storelocator/pt_storelocator" scope="page"/>
+<isinclude template="util/modules"/>
+<isdecorate template="${DecoratorTemplate}">
+
+
+
+
+<div class="storelocator--main storelocator--main-results">
+	<div class="storelocator--left match-height-row">
+
+		<div class="storelocator--searchbar">
+			<form action="${URLUtils.continueURL()}" method="get" id="${pdict.CurrentForms.storelocator.htmlName}">
+				<input type="hidden" name="${pdict.CurrentForms.storelocator.countryCode.htmlName}" value="AU" />
+				<input type="hidden" name="${pdict.CurrentForms.storelocator.distanceUnit.htmlName}" value="mi" />
+				<div class="search-by-zip">
+					<button type="submit" name="${pdict.CurrentForms.storelocator.findbyzip.htmlName}" value="${Resource.msg('global.search','locale',null)}">
+					<i class="sds--icons sds-icon-map"></i>
+					</button>
+					<isinputfield formfield="${pdict.CurrentForms.storelocator.postalCode}" type="input" xhtmlclass="zipcode"/>
+				</div>
+				<div class="search-distance-options">
+					<isinputfield formfield="${pdict.CurrentForms.storelocator.maxdistance}" type="radio"/>
+				</div>
+			</form>
+		</div>
+
+		<!--- results --->
+		<div class="storelocator--results">
+			<isif condition="${pdict.Storess != null && empty(pdict.Storess) && pdict.isSearched}">
+				<div class="store-locator-no-results">
+					<p>${Resource.msg('storelocator.noresults','storelocator',null)}</p>
+					<isprint value="${pdict.StoresPagingModel}"/>
+				</div>
+			</isif>	
+
+			<div class="storelocator--itemsfound">
+				<isprint value="${pdict.StoresCount}"/> ${Resource.msg('storelocator.storelocatorresults.stores','storelocator',null)}
+				 ${Resource.msg('storelocator.storelocatorresults.yoursearchfound','storelocator',null)}
+			</div>
+
+			<isif condition="${!empty(pdict.Stores)}">
+
+				<div id="store-location-results" class="item-list">
+						<isscript>
+
+						searchvalue = pdict.CurrentForms.storelocator.postalCode.value
+
+						</isscript>
+
+						<isloop items="${pdict.Stores}" var="Store" status="loopstate">
+								<div class="store-information storeItem" 
+								data-storeid="${Store.ID}"
+								data-storelat="${Store.latitude}"
+								data-storelon="${Store.longitude}"
+								data-storename="${Store.name}"
+								data-storephone="${Store.phone}"
+								data-addressa="${Store.address1}"
+								data-addressb="${Store.address2}"
+								data-city="${Store.city}"
+								data-stateCode="${Store.stateCode}"
+								data-postalCode="${Store.postalCode}"
+								data-stateCode="${Store.stateCode}"
+								>
+									<div class="table--frame">
+										
+										<div class="table--cell one">
+											<div class="store-name">
+												<isprint value="${Store.name}"/>
+											</div>
+											<isif condition="${Store.storeHours != null}">
+												<div class="store-hours">
+													<isprint value="${Store.storeHours}" encoding="off"/>
+												</div>
+											</isif>
+											<isif condition="${Store.storeEvents != null}">
+												<div class="store-events">
+													<isprint value="${Store.storeEvents}" encoding="off"/>
+												</div>
+											</isif>
+											
+										</div>
+										<div class="table--cell two">
+
+											<div class="table--frame">
+												<div class="table--cell">
+													<div class="store--distance" id="distance-st-${Store.ID}">
+													</div>
+													<div class="store-address">
+														<isprint value="${Store.address1}"/><br/>
+														<isprint value="${Store.city}"/><isif condition="${Store.city != null && Store.stateCode != null}">,</isif> <isprint value="${Store.stateCode}"/> <isprint value="${Store.postalCode}"/><br/>
+														<isprint value="${Store.countryCode}"/>
+													</div>
+												</div>
+												<div class="table--cell">
+													<div class="store--phone">
+													<isprint value="${Store.phone}"/>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="table--frame action-btns">
+										
+										<div class="table--cell one">
+													<a class="store-details-link" id="${Store.ID}"
+													href="${URLUtils.url('Stores-Details','StoreID', Store.ID,'code', searchvalue)}"
+													title="${Resource.msg('storelocator.storelocatorresults.storedetails.label','storelocator',null)}">${Resource.msg('storelocator.storelocatorresults.storedetails','storelocator',null)}</a>
+										</div>
+										<div class="table--cell two">
+											<a href="https://www.google.com/maps/dir//${Store.address1}+${Store.city}+${Store.postalCode}" target="_blank">Directions</a>
+										</div>
+									</div>
+
+
+
+								</div>
+						</isloop>
+				</div>
+			</isif>
+
+		</div>
+
+	</div>
+
+	<div class="storelocator--right match-height-row">
+		<div class="storelocator--map" id="storelocatormap">
+		</div>
+	</div>
+
+</div>
+
+</isdecorate>

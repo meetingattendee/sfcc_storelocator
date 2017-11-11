@@ -1,0 +1,44 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+
+	<isscript>
+		var pageContext = {
+			title:'Store Locator',
+			type:'StoreLocator',
+			ns: 'storelocator'
+		};
+
+		        var StoreMgr = require('dw/catalog/StoreMgr');
+
+	</isscript>
+	<isinclude template="util/modules"/>
+
+	<isinclude template="components/header/htmlhead"/>
+	<isinclude template="storelocator/pt_storelocator_UI"/>
+
+</head>
+<body>
+
+	<div id="wrapper" class="pt_store-locator storelocator">
+
+		<isinclude template="components/header/header"/>
+
+		<div id="main" role="main" class="page-content storelocator--outer clearfix">
+
+			<div id="primary" class="storelocator--primary-content">
+				<isreplace/>
+			</div>
+
+		</div>
+
+		<isinclude template="components/footer/footer"/>
+		<isinclude template="storelocator/pt_storelocator_VARS"/>
+
+	</div>
+</body>
+</html>

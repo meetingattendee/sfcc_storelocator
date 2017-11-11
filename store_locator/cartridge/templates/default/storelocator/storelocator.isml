@@ -1,0 +1,44 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+<isdecorate template="storelocator/pt_storelocator">
+
+		<div class="storelocator--main">
+			<div class="storelocator--left match-height-row">
+
+
+				<div class="storelocator--searchbar">
+					<form action="${URLUtils.continueURL()}" method="get" id="${pdict.CurrentForms.storelocator.htmlName}">
+						<input type="hidden" name="${pdict.CurrentForms.storelocator.countryCode.htmlName}" value="AU" />
+						<input type="hidden" name="${pdict.CurrentForms.storelocator.distanceUnit.htmlName}" value="mi" />
+						<div class="search-by-zip">
+							<button type="submit" name="${pdict.CurrentForms.storelocator.findbyzip.htmlName}" value="${Resource.msg('global.search','locale',null)}">
+							<i class="sds--icons sds-icon-map"></i>
+							</button>
+							<isinputfield formfield="${pdict.CurrentForms.storelocator.postalCode}" type="input" xhtmlclass="zipcode"/>
+						</div>
+						<div class="search-distance-options">
+							<isinputfield formfield="${pdict.CurrentForms.storelocator.maxdistance}" type="radio"/>
+						</div>
+					</form>
+				</div>
+
+				<div class="storelocator--results-empty">
+
+						<div class="store-locator-no-results">
+							<p>${Resource.msg('storelocator.noresults','storelocator',null)}</p>
+							<isprint value="${pdict.StoresPagingModel}"/>
+						</div>
+
+				</div>
+
+			</div>
+
+			<div class="storelocator--right match-height-row">
+				<div class="storelocator--map" id="storelocatormap">
+				</div>
+			</div>
+
+		</div>
+
+
+</isdecorate>

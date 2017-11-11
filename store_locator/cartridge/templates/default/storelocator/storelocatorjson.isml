@@ -1,0 +1,36 @@
+<iscontent type="application/json" charset="UTF-8" compact="true"/>
+<isscript>
+	var countStores = pdict.StoresCount;
+	var storeObj 	= pdict.Stores;
+</isscript>
+{
+	"StoresCount": "${pdict.StoresCount}",
+	"type": "${pdict.type}",
+	"searchKey": "${pdict.searchKey}",
+	"formatted_address": "${pdict.formatted_address}",
+	"location_lat": "${pdict.location_lat}",
+	"location_lng": "${pdict.location_lng}",
+	"stores": 
+		[
+		<isloop items="${storeObj}" var="Store" status="status">
+		{
+			"storeid": "${Store.ID}",
+			"storelat": "${Store.latitude}",
+			"storelon": "${Store.longitude}",
+			"storename": "${Store.name}",
+			"storephone": "${Store.phone}",
+			"addressa": "${Store.address1}",
+			"addressb": "${Store.address2}",
+			"city": "${Store.city}",
+			"stateCode": "${Store.stateCode}",
+			"postalCode": "${Store.postalCode}",
+			"stateCode": "${Store.stateCode}"
+		}
+		<isif condition="${status.count < countStores}">
+		,
+		</isif>
+		</isloop>
+		],
+	"style": "${pdict.mapStyles}"
+}
+

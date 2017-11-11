@@ -1,0 +1,90 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<isinclude template="util/modules"/>
+<isset name="DecoratorTemplate" value="storelocator/pt_storelocator" scope="page"/>
+<iscomment>
+	extend to ajax search later
+<isif condition="${pdict.CurrentHttpParameterMap.format.stringValue == 'ajax' || pdict.CurrentHttpParameterMap.pwr.stringValue == 'true' || pdict.CurrentHttpParameterMap.source.stringValue == 'search' || pdict.CurrentHttpParameterMap.source.stringValue == 'quickview' || pdict.CurrentHttpParameterMap.source.stringValue == 'cart'}">
+	<isset name="DecoratorTemplate" value="util/pt_empty" scope="page"/>
+</isif>
+</iscomment>
+<isdecorate template="${DecoratorTemplate}">
+
+<div class="storelocator--main">
+	<div class="storelocator--left match-height-row">
+		<div class="store-locator-details-map">
+			<div class="store-locator-details">
+				<isif condition="${pdict.Store.image != null}">
+				<div class="store-locator-details--img">
+				 	<img src="${pdict.Store.image.getURL()}" title="${pdict.Store.name}" alt="${pdict.Store.name}" />
+				</div>
+				</isif>
+				<div class="store-locator-details--content">
+					<div class="store-locator-details--name">
+						<h1><isprint value="${pdict.Store.name}"/></h1>
+					</div>
+					<div class="store-information storeItem storedetail"> 
+						<div class="table--frame">
+							
+							<div class="table--cell one">
+								<isif condition="${pdict.Store.storeHours != null}">
+									<div class="store-hours">
+										<isprint value="${pdict.Store.storeHours}" encoding="off"/>
+									</div>
+								</isif>
+								<isif condition="${pdict.Store.storeEvents != null}">
+									<div class="store-events">
+										<isprint value="${pdict.Store.storeEvents}" encoding="off"/>
+									</div>
+								</isif>
+								
+							</div>
+							<div class="table--cell two">
+
+								<div class="table--frame">
+									<div class="table--cell">
+										<div class="store--distance" id="distance-st-${pdict.Store.ID}">
+										</div>
+										<div class="store-address">
+											<isprint value="${pdict.Store.address1}"/><br/>
+											<isprint value="${pdict.Store.city}"/><isif condition="${pdict.Store.city != null && pdict.Store.stateCode != null}">,</isif> <isprint value="${pdict.Store.stateCode}"/> <isprint value="${pdict.Store.postalCode}"/><br/>
+											<isprint value="${pdict.Store.countryCode}"/>
+										</div>
+									</div>
+									<div class="table--cell">
+										<div class="store--phone">
+										<isprint value="${pdict.Store.phone}"/>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				   	<isif condition="${pdict.Store.storeEvents != null}">
+						<div class="store-locator-details--events">
+				      		<div><isprint value="${pdict.Store.storeEvents}" encoding="off"/></div>
+						</div>
+				  	</isif>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="storelocator--right match-height-row">
+		<div class="storelocator--map" id="storelocatormap" 
+			data-searchzip="${pdict.CurrentHttpParameterMap.code.stringValue}"
+			data-storeid="${pdict.Store.ID}"
+			data-storelat="${pdict.Store.latitude}"
+			data-storelon="${pdict.Store.longitude}"
+			data-storename="${pdict.Store.name}"
+			data-storephone="${pdict.Store.phone}"
+			data-addressa="${pdict.Store.address1}"
+			data-addressb="${pdict.Store.address2}"
+			data-city="${pdict.Store.city}"
+			data-stateCode="${pdict.Store.stateCode}"
+			data-postalCode="${pdict.Store.postalCode}"
+			data-stateCode="${pdict.Store.stateCode}"
+		>
+		</div>
+	</div>
+</div>
+</isdecorate>

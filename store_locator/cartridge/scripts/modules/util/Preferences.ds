@@ -1,0 +1,12 @@
+/**
+ * getPreferences() function. Returns custom preferences to be extended 
+ *
+ */
+function getPreferences() : Object {
+
+	var prefs = '';
+	
+	return prefs;
+}
+
+module.exports = getPreferences;
