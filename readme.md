@@ -1,4 +1,4 @@
-# Store Locator Cartridge 
+# Sales Force Commerce Cloud - Store Locator Cartridge  
 
 This document provides technical instructions for installing and using Store Locator Cartridge, which enables store locator features for Sales Force Commerce Cloud. By no means are the features exhaustive. As we develop other projects we can easily extend the application.  
 
