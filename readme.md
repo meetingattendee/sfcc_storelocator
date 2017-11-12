@@ -1,4 +1,4 @@
-# Store Locator Cartridge 
+# Sales Force Commerce Cloud - Store Locator Cartridge  
 
 This document provides technical instructions for installing and using Store Locator Cartridge, which enables store locator features for Sales Force Commerce Cloud. By no means are the features exhaustive. As we develop other projects we can easily extend the application.  
 
@@ -15,10 +15,10 @@ Developers using the Store Locator Cartridge can access and extend the following
 5.  JSON page which is queryable via URL params
 
 
-###Setup
+### Setup
 Copy the cartridge `store_locator` to your root cartridge folder. This folder should contain all for your other cartridges as well.
 
-####Configuration
+#### Configuration
 
 ##### Step 1
 
@@ -87,7 +87,7 @@ Example JSON response
 
 ```
 // 20171111091633
-// https://dev03-na01-billabong.demandware.net/on/demandware.store/Sites-SDS-Site/en_AU/Stores-FindStoresJson?dwfrm_storelocator_countryCode=AU&dwfrm_storelocator_distanceUnit=mi&dwfrm_storelocator_findbyzip=Search&dwfrm_storelocator_postalCode=4225&dwfrm_storelocator_maxdistance=15
+// Stores-FindStoresJson?dwfrm_storelocator_countryCode=AU&dwfrm_storelocator_distanceUnit=mi&dwfrm_storelocator_findbyzip=Search&dwfrm_storelocator_postalCode=4225&dwfrm_storelocator_maxdistance=15
 
 {
   "StoresCount": "5",
