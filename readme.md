@@ -15,10 +15,10 @@ Developers using the Store Locator Cartridge can access and extend the following
 5.  JSON page which is queryable via URL params
 
 
-###Setup
+### Setup
 Copy the cartridge `store_locator` to your root cartridge folder. This folder should contain all for your other cartridges as well.
 
-####Configuration
+#### Configuration
 
 ##### Step 1
 
