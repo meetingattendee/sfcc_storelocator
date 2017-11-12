@@ -87,7 +87,7 @@ Example JSON response
 
 ```
 // 20171111091633
-// https://dev03-na01-billabong.demandware.net/on/demandware.store/Sites-SDS-Site/en_AU/Stores-FindStoresJson?dwfrm_storelocator_countryCode=AU&dwfrm_storelocator_distanceUnit=mi&dwfrm_storelocator_findbyzip=Search&dwfrm_storelocator_postalCode=4225&dwfrm_storelocator_maxdistance=15
+// Stores-FindStoresJson?dwfrm_storelocator_countryCode=AU&dwfrm_storelocator_distanceUnit=mi&dwfrm_storelocator_findbyzip=Search&dwfrm_storelocator_postalCode=4225&dwfrm_storelocator_maxdistance=15
 
 {
   "StoresCount": "5",
