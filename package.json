@@ -1,10 +1,9 @@
 {
   "name": "salesforce-storelocatortest",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "This is a store locator cartrdige for sales force commerce cloud",
   "main": "index.js",
   "scripts": {
-    "pretinstall": "npm install",
     "postinstall": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
