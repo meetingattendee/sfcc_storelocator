@@ -32,7 +32,8 @@ var inquirer 		= require("inquirer"),
 		}).then( function(e) {
 			if(e.core_cartridge)
 
-				return console.error(colors.green('Sorry... this cartridge is not designed for a mobile first application yet. \n Please talk ask Brian to build you one he will love it!'));
+			return console.error(colors.green('Sorry... this cartridge is not designed for a mobile first application yet. \n Please talk ask Brian to build you one he will love it!'));
+			
 			inquirer.prompt({
 					type: "list",
 				    name: "core_cartridge",
@@ -45,7 +46,7 @@ var inquirer 		= require("inquirer"),
 					name: "app_cartridge",
 					message: "Plese select you app cartridge:",
       				paginated: true,
-					choices: dirs(a.core_cartridge)
+					choices: dirs(mypath+a.core_cartridge)
 				}).then(function(b){
 
 					inquirer.prompt({
@@ -55,12 +56,12 @@ var inquirer 		= require("inquirer"),
 						default: sourceDir
 					}).then(function(c){
 
-						var toThisDir 		= a.core_cartridge+'/'+sourceDir
-						var fromThisFile 	= sourceDir+'/'+cpFile
-						var toThisFile 		= a.core_cartridge+'/'+b.app_cartridge+cpFile
+						var toThisDir 		= mypath+a.core_cartridge+'/'+sourceDir
+						var fromThisFile 	= mypath+sourceDir+'/'+cpFile
+						var toThisFile 		= mypath+a.core_cartridge+'/'+b.app_cartridge+cpFile
 						
 						if(c.where_dir!=sourceDir)
-							toThisDir 		= a.core_cartridge+'/'+c.where_dir
+							toThisDir 		= mypath+a.core_cartridge+'/'+c.where_dir
 						
 
 						ncp(sourceDir, toThisDir, function (err) {
@@ -72,7 +73,7 @@ var inquirer 		= require("inquirer"),
 								replace({
 								    regex: sourceDir,
 								    replacement: c.where_dir,
-								    paths: [a.core_cartridge+'/'+c.where_dir+'/.project'],
+								    paths: [mypath+a.core_cartridge+'/'+c.where_dir+'/.project'],
 								    silent: true
 								});
 								console.log('Project file has been updated for new custom directory ... next')
