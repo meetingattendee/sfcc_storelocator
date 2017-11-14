@@ -1,6 +1,6 @@
 {
   "name": "",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is a store locator cartrdige for sales force commerce cloud",
   "main": "index.js",
   "scripts": {
