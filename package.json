@@ -1,6 +1,6 @@
 {
   "name": "salesforce-storelocator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a store locator cartrdige for sales force commerce cloud",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,13 @@
   ],
   "author": "PXLHERO",
   "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "inquirer": "^4.0.0",
+    "js-marker-clusterer": "^1.0.0",
+    "ncp": "^2.0.0",
+    "replace": "^0.3.0"
+  },
   "bugs": {
     "url": "https://github.com/pxlhero/sfcc_storelocator/issues"
   },

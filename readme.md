@@ -1,6 +1,10 @@
-# Sales Force Commerce Cloud - Store Locator Cartridge  
+# Sales Force Commerce Cloud - Store Locator Cartridge - Interactive Install
 
-This document provides technical instructions for installing and using Store Locator Cartridge, which enables store locator features for Sales Force Commerce Cloud. By no means are the features exhaustive. As we develop other projects we can easily extend the application.  
+This document provides technical instructions for installing and using Store Locator Cartridge, which enables store locator features for Sales Force Commerce Cloud. 
+
+It also demonstrates a new approach for SFCC cartridges to be installed interactively. The goal is to extend this methodology to make cartridge installs easier across SFCC.
+
+By no means are the features exhaustive. As we continue to find time and others join in we can easily extend the application.  
 
 A variety of tools and API's have also been included in order to make extension easier in the future such as JSON stored results, preferences which can be stored as custom objects and managed by the client in Business Manager, custom styles as well as methods for fetching data based on custom values.
 
@@ -16,42 +20,24 @@ Developers using the Store Locator Cartridge can access and extend the following
 
 
 ### Setup
-Copy the cartridge `store_locator` to your root cartridge folder. This folder should contain all for your other cartridges as well.
+Follow the prompts in your terminal.
 
 #### Configuration
 
-##### Step 1
+##### Business Manager 
 
 Navigate to the following path `"Sites > Manage Sites > <Merchant Site> - Settings"`
 
-Add the cartridge name ` store_locator` to the Cartridges path.
+Add the cartridge name ` store_locator` (or the custom name you gave it during the install process) to the Cartridges path.
 
 The cartridge has to be added after the app controller cartridge, since we need the newly defined methods to supersede the default `Stores.js`  controller methods.
-
-##### Step 2
-
-Add `store_locator/cartridge/js/pages/storelocator.js` to your application cartridge path so that it can be bundled with your JS module bundler. Alternative you can just require this file as well, which ever you prefer. 
-
-##### Step 3
-
-Install the google marker cluster packager. 
-
-We're using the following google maps package to create map clusters. This allows allows u to group stores that are very close together into a clickable object.
-More info here:
-https://www.npmjs.com/package/js-marker-clusterer 
-More info on the package here: 
-https://developers.google.com/maps/documentation/javascript/marker-clustering
-
-```
-npm install -D js-marker-clusterer
-```
 
 
 ### Additional Developer Notes
 
 
 JSON URL
-`Sites-SDS-Site/en_AU/Stores-FindStoresJson`
+`yoursite-path/Stores-FindStoresJson`
 
 URL Params to customize fetched data
 
@@ -229,4 +215,5 @@ exports.FindStoresJson = guard.ensure(['get'], getstoreJson);
 
 exports.Details = guard.ensure(['get'], details);
 ```
+
 
